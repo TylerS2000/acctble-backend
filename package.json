@@ -1,0 +1,20 @@
+{
+  "name": "acctble-backend",
+  "version": "1.0.0",
+  "description": "backend for acctble",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Tyler",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.4"
+  }
+}
