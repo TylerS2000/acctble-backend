@@ -26,7 +26,7 @@ postRouter.post('/', async (request, response) => {
 console.log(user);
     const post = new Post({
         content: body.content,
-        date: new Date(),
+        date: `${new Date().toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})}`,
         user: user
     })
 
