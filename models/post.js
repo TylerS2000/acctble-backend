@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const postSchema = new mongoose.Schema({
     content: String,
     date: Date,
-    user: [{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }]
+    }
 });
 
 postSchema.set('toJSON', {

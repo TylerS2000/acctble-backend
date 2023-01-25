@@ -5,7 +5,7 @@ const Post = require('../models/post')
 const User = require('../models/user')
 
 postRouter.get('/', (request, response) => {
-    Post.find({}).then(posts => {
+    Post.find({}).populate('user').then(posts => {
         response.json(posts)
     })
 })
@@ -23,11 +23,11 @@ postRouter.post('/', async (request, response) => {
         })
     }
     const user = await User.findById(decodedToken.id)
-
+console.log(user);
     const post = new Post({
         content: body.content,
         date: new Date(),
-        user: user._id
+        user: user
     })
 
     const savedPost = await post.save()
