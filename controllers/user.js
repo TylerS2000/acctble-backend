@@ -14,19 +14,23 @@ userRouter.get('/:id', async (request, response) => {
 userRouter.post('/', async (request, response) => {
     const body = request.body;
     const saltRounds = 10;
-
     const passwordHash = await bcrypt.hash(body.password, saltRounds);
-
     const user = new User({
         username: body.username,
         name: body.name,
         passwordHash:passwordHash
     });
 
-    const savedUser=user.save();
+    const savedUser=user.save(function(err){
+        if(err){
+            console.log(err);
+            return response.status(400).json({error:'already exists'});
+        }
+        response.status(201).json(savedUser)
+    });
 
-    response.status(201).json(savedUser);
-});
+    ;}
+);
 
 module.exports = userRouter;
 
