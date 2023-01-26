@@ -14,7 +14,7 @@ mongoose.connect(process.env.mongoDB)
 
 app.use(cors());
 app.use(express.json());
-
+app.use(express.static('build'));
 app.use('/api/posts', postRouter);
 app.use('/api/user', userRouter);
 app.use('/api/login', loginRouter);
