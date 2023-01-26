@@ -6,6 +6,10 @@ userRouter.get('/', async (request, response) => {
     const users = await User.find({}).populate('posts', { content: 1, date: 1 });
     response.json(users);
 });
+userRouter.get('/:id', async (request, response) => {
+    const  user = await User.findById(request.params.id).populate('posts', { content: 1, date: 1 });
+    response.json(user);
+});
 
 userRouter.post('/', async (request, response) => {
     const body = request.body;
