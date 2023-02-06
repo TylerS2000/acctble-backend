@@ -1,0 +1,1 @@
+Acctble is a social media app where users post one goal and one thing they did today to get closer to that goal. The point of the app is to have a space where there is no distractions and a positive environment for people to get motivated by seeing what others are doing.
