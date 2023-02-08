@@ -36,10 +36,11 @@ userRouter.post('/', async (request, response) => {
 userRouter.put('/:id', async (request, response) => {
     const body = request.body;
     const user = {
-        profilePicture: body.profilePicture,
+        pic: body.pic,
         bio: body.bio
     };
     const token = getTokenFrom(request)
+    console.log(token);
     const decodedToken = jwt.verify(token, process.env.SECRET)
     try{
         await User.findByIdAndUpdate(request.params.id, user);
