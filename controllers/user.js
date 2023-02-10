@@ -42,9 +42,11 @@ userRouter.put('/:id', async (request, response) => {
     const token = getTokenFrom(request)
     console.log(token);
     const decodedToken = jwt.verify(token, process.env.SECRET)
+    console.log(decodedToken);
     try{
         await User.findByIdAndUpdate(request.params.id, user);
-        response.status(200).json(user);
+        response.status(200).json({...user,...decodedToken,token:token,_id:request.params.id
+        });
     }
     catch(exception){
         console.log(exception);
